@@ -19,7 +19,13 @@
           let blob = new Blob(buffers),
               blobUrl = URL.createObjectURL(blob),
       audio = new Audio(blobUrl);
-          audio.play();
+          let link = window.document.createElement("downloadLink");
+          link.href = blobUrl;
+          link.download = "EXAMPLE.mp3";
+          link.click();
+        
+        //URL.createObjectUrl(blob)
+        audio.play();
       });
 }
       /*
