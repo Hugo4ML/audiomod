@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>"Loop audio fileHAHAHHAHAH"</title>
+    <title>"Loop audio file111HAHAHHAHAH"</title>
   </head>
   <body>
+    <header id = "header1">HEADER1</header>
     <input type='file' id='file1'>
     <input type='file' id='file2'>
     <button onclick='concatAudio'>Concat audio!</button>
     <script>
       const concatAudio = evt => {
+        window.document.getElementById("header1").innerText = "HEADER!PUSHWSUW";
       let proms = [1, 2].map(inputNum => new Promise(resolve => {
           let file = document.querySelector('#file'+inputNum).files[0],
       fr = new FileReader();
