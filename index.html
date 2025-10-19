@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>"Loop audio file203"</title>
+    <title>"Loop audio file3"</title>
   </head>
   <body>
     <h1 id = "header1">HEADER1</h1>
@@ -10,7 +10,17 @@
     <button onclick='window.document.getElementById("header1").innerHTML = "HEADER!PUSHWSUW";'>CHANGEHEADER</button>
     <button onclick='concatAudio'>Concat audio!</button>
     <script>
-      window.document.getElementById("header1").innerHTML = "HEADERWONTCHANGEIMSAD";
+      window.document.getElementById("header1").innerHTML = "HEADERWONTCHANGEIMSAD3";
+      function loopAudio() {
+        /*
+        Generates new audio by concatenating original to itself until it passes the specified lenght in time.
+        */
+        window.document.getElementById("header1").innerHTML = "loopAudio called";
+        const file = window.document.getElementById("file").files[0];
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(file);
+      }
+      
       const concatAudio = evt => {
         window.document.getElementById("header1").innerHTML = "HEADER!PUSHWSUW";
       let proms = [1, 2].map(inputNum => new Promise(resolve => {
