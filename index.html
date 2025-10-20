@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>"Loop audio file(6)"</title>
+    <title>"Loop audio file(7)"</title>
   </head>
   <body>
-    <h1 id = "header1">Header</h1>
     <input type = "file" id = "file">
     <input type='file' id='file2'>
     <button onclick='window.document.getElementById("header1").innerHTML = "loopAudio call state";'>Reset header</button>
     <button onclick='loopAudio();'>Concat audio!</button>
+    <h1 id = "header1">Header</h1>
     <script>
       window.document.getElementById("header1").innerHTML = "loopAudio call state";
       function loopAudio() {
@@ -36,28 +36,8 @@
         window.document.getElementById("header1").innerHTML = "loopAudio line 36 passed"; //Confirms function has reached a certain point.
         audio.play();
         window.document.getElementById("header1").innerHTML = "loopAudio completed"; //Confirms function completion.
+        window.document.getElementById("header1").innerHTML = reader.readAsText(file); //Confirms function completion.
       }
-      
-      const concatAudio = evt => {
-        window.document.getElementById("header1").innerHTML = "HEADER!PUSHWSUW";
-      let proms = [1, 2].map(inputNum => new Promise(resolve => {
-          let file = document.querySelector('#file'+inputNum).files[0],
-      fr = new FileReader();
-          fr.onloadend = evt => resolve(fr.result);
-          fr.readAsArrayBuffer(file);
-      }));
-      Promise.all(proms).then(buffers => {
-          let blob = new Blob(buffers),
-              blobUrl = URL.createObjectURL(blob),
-      audio = new Audio(blobUrl);
-          let link = window.document.createElement("downloadLink");
-          link.href = blobUrl;
-          link.download = "EXAMPLE.mp3";
-          link.click();
-        
-        //URL.createObjectUrl(blob)
-        audio.play();
-      });
 }
       /*
     <input type = "file" id = "audio" accept = "audio/*"></input>
