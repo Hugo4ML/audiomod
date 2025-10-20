@@ -4,11 +4,11 @@
     <title>"Loop audio file(7)"</title>
   </head>
   <body>
+    <h1 id = "header1">Header</h1>
     <input type = "file" id = "file">
     <input type='file' id='file2'>
     <button onclick='window.document.getElementById("header1").innerHTML = "loopAudio call state";'>Reset header</button>
     <button onclick='loopAudio();'>Concat audio!</button>
-    <h1 id = "header1">Header</h1>
     <script>
       window.document.getElementById("header1").innerHTML = "loopAudio call state";
       function loopAudio() {
