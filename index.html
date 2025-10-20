@@ -24,11 +24,11 @@
         window.document.getElementById("header1").innerHTML = "loopAudio line 24 passed"; //Confirms function has reached a certain point.
         let blob = new Blob(buffer), url = URL.createObjectURL(blob);
         window.document.getElementById("header1").innerHTML = "loopAudio line 26 passed"; //Confirms function has reached a certain point.
-        let audio = new Audio(blobUrl);
+        let audio = new Audio(url);
         window.document.getElementById("header1").innerHTML = "loopAudio line 28 passed"; //Confirms function has reached a certain point.
         let link = window.document.createElement("downloadLink");
         window.document.getElementById("header1").innerHTML = "loopAudio line 30 passed"; //Confirms function has reached a certain point.
-        link.href = blobUrl;
+        link.href = url;
         window.document.getElementById("header1").innerHTML = "loopAudio line 32 passed"; //Confirms function has reached a certain point.
         link.download = "EXAMPLE.mp3";
         window.document.getElementById("header1").innerHTML = "loopAudio line 34 passed"; //Confirms function has reached a certain point.
