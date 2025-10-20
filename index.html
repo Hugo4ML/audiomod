@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1 id = "header1">Header</h1>
-    <input type='file' id='file'>
+    <input type = "file" id = "file">
     <input type='file' id='file2'>
     <button onclick='window.document.getElementById("header1").innerHTML = "loopAudio call state";'>Reset header</button>
     <button onclick='loopAudio();'>Concat audio!</button>
@@ -18,7 +18,16 @@
         window.document.getElementById("header1").innerHTML = "loopAudio called"; //Confirms function call.
         const file = window.document.getElementById("file").files[0];
         const reader = new FileReader();
-        reader.readAsArrayBuffer(file);
+        let buffer = reader.readAsArrayBuffer(file);
+        let blob = new Blob(buffer), url = URL.createObjectURL(blob);
+          audio = new Audio(blobUrl);
+          let link = window.document.createElement("downloadLink");
+          link.href = blobUrl;
+          link.download = "EXAMPLE.mp3";
+          link.click();
+        
+        //URL.createObjectUrl(blob)
+        audio.play();
         window.document.getElementById("header1").innerHTML = "loopAudio completed"; //Confirms function completion.
       }
       
