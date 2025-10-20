@@ -20,23 +20,8 @@
         window.document.getElementById("header1").innerHTML = "loopAudio line 20 passed"; //Confirms function has reached a certain point.
         const reader = new FileReader();
         window.document.getElementById("header1").innerHTML = "loopAudio line 22 passed"; //Confirms function has reached a certain point.
-        let buffer = reader.readAsArrayBuffer(file);
-        window.document.getElementById("header1").innerHTML = "loopAudio line 24 passed"; //Confirms function has reached a certain point.
-        let blob = new Blob(buffer), url = URL.createObjectURL(blob);
-        window.document.getElementById("header1").innerHTML = "loopAudio line 26 passed"; //Confirms function has reached a certain point.
-        let audio = new Audio(url);
-        window.document.getElementById("header1").innerHTML = "loopAudio line 28 passed"; //Confirms function has reached a certain point.
-        let link = window.document.createElement("downloadLink");
-        window.document.getElementById("header1").innerHTML = "loopAudio line 30 passed"; //Confirms function has reached a certain point.
-        link.href = url;
-        window.document.getElementById("header1").innerHTML = "loopAudio line 32 passed"; //Confirms function has reached a certain point.
-        link.download = "EXAMPLE.mp3";
-        window.document.getElementById("header1").innerHTML = "loopAudio line 34 passed"; //Confirms function has reached a certain point.
-        link.click();
-        window.document.getElementById("header1").innerHTML = "loopAudio line 36 passed"; //Confirms function has reached a certain point.
-        audio.play();
-        window.document.getElementById("header1").innerHTML = "loopAudio completed"; //Confirms function completion.
         window.document.getElementById("header1").innerHTML = reader.readAsText(file); //TEST
+        //window.document.getElementById("header1").innerHTML = "loopAudio completed"; //Confirms function completion.
       }
       /*
     <input type = "file" id = "audio" accept = "audio/*"></input>
