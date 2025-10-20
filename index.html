@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>"Loop audio file3"</title>
+    <title>"Loop audio file(5)"</title>
   </head>
   <body>
-    <h1 id = "header1">HEADER1</h1>
+    <h1 id = "header1">Header</h1>
     <input type='file' id='file1'>
     <input type='file' id='file2'>
-    <button onclick='window.document.getElementById("header1").innerHTML = "HEADER!PUSHWSUW";'>CHANGEHEADER</button>
+    <button onclick='window.document.getElementById("header1").innerHTML = "loopAudio call state";'>Reset header</button>
     <button onclick='loopAudio();'>Concat audio!</button>
     <script>
-      window.document.getElementById("header1").innerHTML = "HEADERWONTCHANGEIMSAD3";
+      window.document.getElementById("header1").innerHTML = "loopAudio call state";
       function loopAudio() {
         /*
         Generates new audio by concatenating original to itself until it passes the specified lenght in time.
         */
-        window.document.getElementById("header1").innerHTML = "loopAudio called";
+        window.document.getElementById("header1").innerHTML = "loopAudio called"; //Confirms function call.
         const file = window.document.getElementById("file").files[0];
         const reader = new FileReader();
         reader.readAsArrayBuffer(file);
+        window.document.getElementById("header1").innerHTML = "loopAudio completed"; //Confirms function call.
       }
       
       const concatAudio = evt => {
