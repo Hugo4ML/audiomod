@@ -19,20 +19,11 @@
         const file = window.document.getElementById("file").files[0];
         window.document.getElementById("header1").innerHTML = "loopAudio line 20 passed"; //Confirms function has reached a certain point.
         const fileReader = new FileReader();
-        fileReader.readAsText(file);
         window.document.getElementById("header1").innerHTML = "loopAudio line 21 passed"; //Confirms function has reached a certain point.
-        const content = fileReader.result;
-        window.document.getElementById("header1").innerHTML = "loopAudio line 24 passed"; //Confirms function has reached a certain point.
-        /*let blob = new Blob(content);
-        window.document.getElementById("header1").innerHTML = "loopAudio line 26 passed"; //Confirms function has reached a certain point.
-        const url = URL.createObjectURL(blob);
-        window.document.getElementById("header1").innerHTML = "loopAudio line 28 passed"; //Confirms function has reached a certain point.
-        const audio = new Audio(url);
-        window.document.getElementById("header1").innerHTML = "loopAudio line 30 passed"; //Confirms function has reached a certain point.
-        audio.play();*/
-        window.document.getElementById("header2").innerHTML = "Pending request"; //Confirms function call.
-        window.document.getElementById("header1").innerHTML = "loopAudio completed"; //Confirms function completion.
-        window.document.getElementById("header1").innerHTML = content;
+        fileReader.onload = event => {
+          window.document.getElementById("header1").innerHTML = fileReader.result;
+        }
+        fileReader.readAsText(file);
       }
     </script>
   </body>
