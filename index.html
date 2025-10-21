@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>"Loop audio file(2)"</title>
+    <title>Loop audio file(3)</title>
   </head>
   <body>
-    <input type = "file" id = "file">
+    <input type = "file" id = "file"></input>
     <button onclick='window.document.getElementById("header1").innerHTML = "loopAudio call state";'>Reset header</button>
     <button onclick='loopAudio();'>Concat audio!</button>
     <h1 id = 'header1'>Header</h1>
@@ -20,9 +20,10 @@
         window.document.getElementById("header1").innerHTML = "loopAudio line 20 passed"; //Confirms function has reached a certain point.
         const fileReader = new FileReader();
         window.document.getElementById("header1").innerHTML = "loopAudio line 21 passed"; //Confirms function has reached a certain point.
-        fileReader.onloadend = event => resolve(fileReader.result);
+        fileReader.onloadend = event => {
+          window.document.getElementById("header1").innerHTML = fileReader.result;
+        };
         fileReader.readAsText(file);
-        window.document.getElementById("header1").innerHTML = fileReader.result;
       }
     </script>
   </body>
