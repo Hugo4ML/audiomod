@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(3)</title>
+    <title>Loop audio file(5)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -21,9 +21,15 @@
         const fileReader = new FileReader();
         window.document.getElementById("header1").innerHTML = "loopAudio line 21 passed"; //Confirms function has reached a certain point.
         fileReader.onloadend = event => {
-          window.document.getElementById("header1").innerHTML = fileReader.result;
+          let blob = new Blob(fileReader.result);
+          let url = URL.createObjectURL(blob);
+          let audio = new Audio(url);
+          audio.load();
+          audio.play();
+          window.document.getElementById("header1").innerHTML = "End reached.";
+          //window.document.getElementById("header1").innerHTML = fileReader.result;
         };
-        fileReader.readAsText(file);
+        fileReader.readAsArrayBuffer(file);
       }
     </script>
   </body>
