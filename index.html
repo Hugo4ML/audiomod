@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>"Loop audio file(8)"</title>
+    <title>"Loop audio file(9)"</title>
   </head>
   <body>
     <input type = "file" id = "file">
@@ -11,7 +11,7 @@
     <h2 id = 'header2'>Header</h2>
     <script>
       window.document.getElementById("header1").innerHTML = "loopAudio call state"
-      function loopAudio() {
+      async function loopAudio() {
         /*
         Generates new audio by concatenating original to itself until it passes the specified lenght in time.
         */
@@ -24,7 +24,7 @@
           window.document.getElementById("header1").innerHTML = fileReader.result;
         }*/
         fileReader.readAsText(file);
-        window.document.getElementById("header1").innerHTML = fileReader.result;
+        window.document.getElementById("header1").innerHTML = await fileReader.result;
       }
     </script>
   </body>
