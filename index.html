@@ -20,10 +20,11 @@
         window.document.getElementById("header1").innerHTML = "loopAudio line 20 passed"; //Confirms function has reached a certain point.
         const fileReader = new FileReader();
         window.document.getElementById("header1").innerHTML = "loopAudio line 21 passed"; //Confirms function has reached a certain point.
-        fileReader.onload = event => {
+        /*fileReader.onload = event => {
           window.document.getElementById("header1").innerHTML = fileReader.result;
-        }
+        }*/
         fileReader.readAsText(file);
+        window.document.getElementById("header1").innerHTML = fileReader.result;
       }
     </script>
   </body>
