@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(3)</title>
+    <title>Loop audio file(4)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -32,6 +32,13 @@
             for(let index = 0; index < array.length; ++index) array[index] = data;
             const blob = new Blob(array), url = URL.createObjectURL(blob), audio = new Audio(url);
             window.document.getElementById("header1").innerHTML = "End not reached." + array.length;
+            
+            let link = document.createElement("Link");
+            
+            link.href = url;
+            link.download = "DOWNLOAD.m4a";
+            link.click();
+            
             audio.load();
             audio.play();
             window.document.getElementById("header1").innerHTML = "End kinda reached." + array.length;
