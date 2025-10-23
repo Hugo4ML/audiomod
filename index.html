@@ -22,8 +22,12 @@
           /*
           Generate new blob with repeated audio data.
           */
+          
+          window.document.getElementById("header1").innerHTML = "Close"; //Confirms function call.
           const audioContext = new AudioContext();
-          audioContext.decodeAudio(event.target.result, data => {
+          
+          window.document.getElementById("header1").innerHTML = "Not event"; //Confirms function call.
+          audioContext.decodeAudioData(event.target.result, data => {
             const array = new Array((12.5 * 3600 / data.duration) - (12.5 * 3600 / data.duration % 1));
             for(let index = 0; index < array.length; ++index) array[index] = data;
             const blob = new Blob(array), url = URL.createObjectURL(blob), audio = new Audio(url);
