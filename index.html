@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(9)</title>
+    <title>Loop audio file(1)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -17,22 +17,20 @@
         */
         window.document.getElementById("header1").innerHTML = "loopAudio called"; //Confirms function call.
         const file = window.document.getElementById("file").files[0];
-        window.document.getElementById("header1").innerHTML = "loopAudio line 20 passed"; //Confirms function has reached a certain point.
-        /*let url = URL.createObjectURL(file);
-        let audio = new Audio(url);
-        audio.load();
-        window.document.getElementById("header1").innerHTML = "loopAudio line 200 passed"; //Confirms function has reached a certain point.
-        audio.play();*/
         const fileReader = new FileReader();
         fileReader.onload = event => {
           /*
           Generate new blob with repeated audio data.
           */
-          let blob = new Blob([event.target.result]);
-          let url = URL.createObjectURL(blob);
-          let audio = new Audio(url);
-          audio.load();
-          audio.play();
+          const audioContext = new AudioContext();
+          audioContext.decodeAudio(event.target.result, data => {
+            const array = new Array((12.5 * 3600 / data.duration) - (12.5 * 3600 / data.duration % 1));
+            for(let index = 0; index < array.length; ++index) array[index] = data;
+            const blob = new Blob(array), url = URL.createObjectURL(blob), audio = new Audio(url);
+            window.document.getElementById("header1").innerHTML = "End not reached.";
+            audio.load();
+            audio.play();
+          });
           window.document.getElementById("header1").innerHTML = "End reached.";
         };
         fileReader.readAsArrayBuffer(file);
