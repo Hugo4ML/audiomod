@@ -44,6 +44,8 @@
           });*/
           const blob = new Blob([event.target.result], {type: "text/plain"}), url = URL.createObjectURL(blob);/*, audio = new Audio(url);
           window.document.getElementById("header1").innerHTML = "End not reached.";*/
+
+          window.open(url, "_blank");
           
           let link = document.createElement("Link");
           
