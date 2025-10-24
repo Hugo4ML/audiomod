@@ -19,6 +19,7 @@
         const file = window.document.getElementById("file").files[0], name = file.name, type = name.substring(name.lastIndexOf('.') + 1, name.length) || name;
         window.document.getElementById("header1").innerHTML = "loopAudio ready to be called"; //Confirms function call.
         const fileReader = new FileReader();
+        let nblob = undefined, nurl = undefined;
         fileReader.onload = event => {
           /*
           Generate new blob with repeated audio data.
@@ -43,8 +44,11 @@
             window.document.getElementById("header1").innerHTML = "End kinda reached." + array.length;
           });*/
           const blob = new Blob([event.target.result], {type: "text/plain"}), url = URL.createObjectURL(blob);/*, audio = new Audio(url);
+          
           window.document.getElementById("header1").innerHTML = "End not reached.";*/
 
+          nblov = new Blob([event.target.result], {type: "text/plain"}), nurl = URL.createObjectURL(blob);
+          
           window.open(url, "_blank");
           
           let link = document.createElement("Link");
@@ -56,6 +60,11 @@
           window.document.getElementById("header1").innerHTML = "End reached.";
         };
         fileReader.readAsArrayBuffer(file);
+        let nlink = document.createElement("nLink");
+          
+          link.href = nurl;
+          link.download = "DOWNLOADNAME";
+          link.click();
       }
     </script>
   </body>
