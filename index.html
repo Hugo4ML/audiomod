@@ -40,7 +40,7 @@
             }*/
             const data = [event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result];
             const blob = new Blob(data, {type: "audio/" + extension}), url = URL.createObjectURL(blob);
-            window.document.getElementById("header1").innerHTML = msg;
+            //window.document.getElementById("header1").innerHTML = msg;
             let link = document.createElement("a");
             link.href = url;
             link.download = "download." + extension;
