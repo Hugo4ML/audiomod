@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(5)</title>
+    <title>Loop audio file(6)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -25,11 +25,11 @@
           */
           
           window.document.getElementById("header1").innerHTML = "Close"; //Confirms function call.
-          //const audioContext = new AudioContext();
+          const audioContext = new AudioContext();
           
           window.document.getElementById("header1").innerHTML = "Not even"; //Confirms function call.
-          /*audioContext.decodeAudioData(event.target.result, data => {
-            const array = new Array((12.5 * 3600 / data.duration) - (12.5 * 3600 / data.duration % 1));
+          audioContext.decodeAudioData(event.target.result, data => {
+            /*const array = new Array((12.5 * 3600 / data.duration) - (12.5 * 3600 / data.duration % 1));
             for(let index = 0; index < array.length; ++index) array[index] = data;
             const blob = new Blob(array), url = URL.createObjectURL(blob), audio = new Audio(url);
             window.document.getElementById("header1").innerHTML = "End not reached." + array.length;
@@ -41,14 +41,14 @@
             link.click();
             
             window.document.getElementById("header1").innerHTML = "End kinda reached." + array.length;*/
-            
-            /*const blob = new Blob([data], {type: "audio/" + extension}), url = URL.createObjectURL(blob);/*, audio = new Audio(url);
+            */
+            const blob = new Blob([data], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
   
             let link = document.createElement("a");
             link.href = url;
             link.download = "download." + extension;
             link.click();
-          });*/
+          });
           const blob = new Blob([event.target.result], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
 
           let link = document.createElement("a");
