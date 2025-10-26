@@ -58,7 +58,7 @@
             link.href = url;
             link.download = "download." + extension;
             link.click();
-            window.document.getElementById("header1").innerHTML = "End reached.";
+            window.document.getElementById("header1").innerHTML = "End reached. " + audio.duration;
           }
           audio.src = URL.createObjectURL(file);
         };
