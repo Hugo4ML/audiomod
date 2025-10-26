@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(1)</title>
+    <title>Loop audio file(2)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -30,6 +30,8 @@
             */
             const data = new Array(44);//Math.trunc((12.5 * 3600) / audio.duration) + 1);
             for(let index = 0; index < data.length; ++index) data[index] = event.target.result;
+            data[0] = event.target.result;
+            data[43] = event.target.result;
             const blob = new Blob(data, {type: "audio/" + extension}), url = URL.createObjectURL(blob);
             window.document.getElementById("header1").innerHTML = audio.duration + ", " + ((12.5 * 3600) / audio.duration) + ", " + (((12.5 * 3600) / audio.duration) % 1);
             let link = document.createElement("a");
