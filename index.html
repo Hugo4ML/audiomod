@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(2)</title>
+    <title>Loop audio file(3)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -16,10 +16,9 @@
         Generates new audio by concatenating original to itself until it passes the specified lenght in time.
         */
         window.document.getElementById("header1").innerHTML = "loopAudio called"; //Confirms function call.
-        const file = window.document.getElementById("file").files[0], name = file.name, type = name.substring(name.lastIndexOf('.') + 1, name.length) || name;
+        const file = window.document.getElementById("file").files[0], name = file.name, extension = name.substring(name.lastIndexOf('.') + 1, name.length) || name;
         window.document.getElementById("header1").innerHTML = "loopAudio ready to be called"; //Confirms function call.
         const fileReader = new FileReader();
-        let nblob = undefined, nurl = undefined;
         fileReader.onload = event => {
           /*
           Generate new blob with repeated audio data.
@@ -43,7 +42,7 @@
             
             window.document.getElementById("header1").innerHTML = "End kinda reached." + array.length;
           });*/
-          const blob = new Blob([event.target.result], {type: "audio/m4a"}), url = URL.createObjectURL(blob);/*, audio = new Audio(url);
+          const blob = new Blob([event.target.result], {type: "audio/" + extension}), url = URL.createObjectURL(blob);/*, audio = new Audio(url);
           
           window.document.getElementById("header1").innerHTML = "End not reached.";*/
           
@@ -51,7 +50,7 @@
 
           let link = document.createElement("a");
           link.href = url;
-          link.download = "download.m4a";
+          link.download = "download." + extension;
           link.click();
           
           window.document.getElementById("header1").innerHTML = "End reached.";
