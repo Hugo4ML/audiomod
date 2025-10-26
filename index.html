@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(3)</title>
+    <title>Loop audio file(4)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -25,7 +25,6 @@
           */
           
           window.document.getElementById("header1").innerHTML = "Close"; //Confirms function call.
-          const audioContext = new AudioContext();
           
           window.document.getElementById("header1").innerHTML = "Not even"; //Confirms function call.
           //audioContext.decodeAudioData(event.target.result, data => {
@@ -61,6 +60,7 @@
             link.click();
             window.document.getElementById("header1").innerHTML = "End reached.";
           }
+          audio.src = URL.createObjectURL(file);
         };
         fileReader.readAsArrayBuffer(file);
       }
