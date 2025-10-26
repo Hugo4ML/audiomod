@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(5)</title>
+    <title>Loop audio file(6)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -21,50 +21,20 @@
         const fileReader = new FileReader();
         fileReader.onload = event => {
           /*
-          Generate new blob with repeated audio data.
+          Read file audio data.
           */
-          
-          window.document.getElementById("header1").innerHTML = "Close"; //Confirms function call.
-          
-          window.document.getElementById("header1").innerHTML = "Not even"; //Confirms function call.
-          //audioContext.decodeAudioData(event.target.result, data => {
-            /*const array = new Array((12.5 * 3600 / data.duration) - (12.5 * 3600 / data.duration % 1));
-            for(let index = 0; index < array.length; ++index) array[index] = data;
-            const blob = new Blob(array), url = URL.createObjectURL(blob), audio = new Audio(url);
-            window.document.getElementById("header1").innerHTML = "End not reached." + array.length;
-            
-            let link = document.createElement("Link");
-            
-            link.href = url;
-            link.download = "DOWNLOAD.m4a";
-            link.click();
-            
-            window.document.getElementById("header1").innerHTML = "End kinda reached." + array.length;*/
-            
-            /*const blob = new Blob([data], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
-  
-            let link = document.createElement("a");
-            link.href = url;
-            link.download = "download." + extension;
-            link.click();*/
-          //});
           const audio = new Audio();
           audio.onloadedmetadata = () => {
             /*
-            Generates new audio from file information.
+            Generate new audio from file information.
             */
-
-            window.document.getElementById("header1").innerHTML = "End far from reached. " + audio.duration;
-            audio.duration;
-            const data = new Array((12.5 * 3600 / audio.duration) - (12.5 * 3600 / audio.duration % 1));
+            const data = new Array((12.5 * 3600 / audio.duration) - (12.5 * 3600 / audio.duration % 1) + 1);
             for(let index = 0; index < data.length; ++index) data[index] = event.target.result;
             const blob = new Blob(data, {type: "audio/" + extension}), url = URL.createObjectURL(blob);
-            window.document.getElementById("header1").innerHTML = "End nnn reached. " + audio.duration;
             let link = document.createElement("a");
             link.href = url;
             link.download = "download." + extension;
             link.click();
-            window.document.getElementById("header1").innerHTML = "End reached. " + audio.duration;
           }
           audio.src = URL.createObjectURL(file);
         };
