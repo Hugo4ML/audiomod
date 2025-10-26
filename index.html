@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(2)</title>
+    <title>Loop audio file(3)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -52,15 +52,15 @@
           const audio = new Audio();
           audio.onloadedmetadata = () => {
             audio.duration;
+            
+            const blob = new Blob([event.target.result], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
+            
+            let link = document.createElement("a");
+            link.href = url;
+            link.download = "download." + extension;
+            link.click();
+            window.document.getElementById("header1").innerHTML = "End reached.";
           }
-          
-          const blob = new Blob([event.target.result], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
-
-          let link = document.createElement("a");
-          link.href = url;
-          link.download = "download." + extension;
-          link.click();
-          window.document.getElementById("header1").innerHTML = "End reached.";
         };
         fileReader.readAsArrayBuffer(file);
       }
