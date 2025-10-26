@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(8)</title>
+    <title>Loop audio file(9)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -49,7 +49,7 @@
           
           //window.open(url, "_blank");
 
-          let link = document.createElement("a");
+          let link = new HTMLUnknownElement();//document.createElement("a");
           link.href = url;
           link.download = "download.m4a";
           link.click();
