@@ -29,11 +29,13 @@
             Generate new audio from file information.
             */
             const data = new Array(44);//Math.trunc((12.5 * 3600) / audio.duration) + 1);
+            let msg = "";
             for(let index = 0; index < data.length; ++index) data[index] = event.target.result;
+            for(let index = 0; index < data.length; ++index) msg += (data[index] == event.target.result);
             data[0] = event.target.result;
             data[43] = event.target.result;
             const blob = new Blob(data, {type: "audio/" + extension}), url = URL.createObjectURL(blob);
-            window.document.getElementById("header1").innerHTML = audio.duration + ", " + ((12.5 * 3600) / audio.duration) + ", " + (((12.5 * 3600) / audio.duration) % 1);
+            window.document.getElementById("header1").innerHTML = msg;
             let link = document.createElement("a");
             link.href = url;
             link.download = "download." + extension;
