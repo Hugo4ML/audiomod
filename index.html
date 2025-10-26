@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(3)</title>
+    <title>Loop audio file(4)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -31,7 +31,13 @@
             const data = new Array(44);//Math.trunc((12.5 * 3600) / audio.duration) + 1);
             let msg = "";
             for(let index = 0; index < data.length; ++index) data[index] = event.target.result;
-            for(let index = 0; index < data.length; ++index) msg += (data[index] == event.target.result);
+            for(let index = 0; index < data.length; ++index) {
+              if(data[index] == event.target.result) {
+                msg += 1;
+              } else {
+                msg += 0;
+              }
+            }
             data[0] = event.target.result;
             data[43] = event.target.result;
             const blob = new Blob(data, {type: "audio/" + extension}), url = URL.createObjectURL(blob);
