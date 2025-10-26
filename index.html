@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(5)</title>
+    <title>Loop audio file(6)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -38,9 +38,7 @@
                 msg += 0;
               }
             }
-            data[0] = event.target.result;
-            data[43] = event.target.result;
-            data = [event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result]
+            //data = [event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result, event.target.result]
             const blob = new Blob(data, {type: "audio/" + extension}), url = URL.createObjectURL(blob);
             window.document.getElementById("header1").innerHTML = msg;
             let link = document.createElement("a");
