@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(8)</title>
+    <title>Loop audio file(9)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -25,10 +25,10 @@
           */
           
           window.document.getElementById("header1").innerHTML = "Close"; //Confirms function call.
-          const audioContext = new AudioContext();
+          //const audioContext = new AudioContext();
           
           window.document.getElementById("header1").innerHTML = "Not even"; //Confirms function call.
-          audioContext.decodeAudioData(event.target.result, data => {
+          //audioContext.decodeAudioData(event.target.result, data => {
             /*const array = new Array((12.5 * 3600 / data.duration) - (12.5 * 3600 / data.duration % 1));
             for(let index = 0; index < array.length; ++index) array[index] = data;
             const blob = new Blob(array), url = URL.createObjectURL(blob), audio = new Audio(url);
@@ -48,7 +48,7 @@
             link.href = url;
             link.download = "download." + extension;
             link.click();*/
-          });
+          //});
           const blob = new Blob([event.target.result], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
 
           let link = document.createElement("a");
