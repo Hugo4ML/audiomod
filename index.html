@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(7)</title>
+    <title>Loop audio file(8)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -47,11 +47,11 @@
           
           window.document.getElementById("header1").innerHTML = "End not reached.";*/
           
-          window.open(url, "_blank");
+          //window.open(url, "_blank");
 
-          let link = document.createElement("link");
+          let link = document.createElement("a");
           link.href = url;
-          link.download = "ahh.m4a";
+          link.download = "download.m4a";
           link.click();
           
           window.document.getElementById("header1").innerHTML = "End reached.";
