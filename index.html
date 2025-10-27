@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(3)</title>
+    <title>Loop audio file(4)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -44,10 +44,10 @@
             link.href = url;
             link.download = "download." + extension;
             link.click();
-            if(false) {
-              blob = new Blob([await blob.arrayBuffer(), event.target.result], {type: "audio/" + extension});
-              //audio.src = URL.createObjectURL(blob);
-            }/* else {
+            
+            blob = new Blob([await blob.arrayBuffer(), event.target.result], {type: "audio/" + extension});
+            //audio.src = URL.createObjectURL(blob);
+            /* else {
               const link = document.createElement("a");
               link.href = URL.createObjectURL(blob);
               link.download = "download." + extension;
