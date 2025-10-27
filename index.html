@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(9)</title>
+    <title>Loop audio file(0)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -23,12 +23,13 @@
           /*
           Read file audio data.
           */
+          let blob = new Blob([event.target.result], {type: "audio/" + extension});
           const audio = new Audio();
-          audio.onloadedmetadata = () => {
+          audio.onloadedmetadata = async => {
             /*
             Generate new audio from file information.
             */
-            const data = new Array(Math.trunc((12.5 * 3600) / audio.duration) + 1);
+            /*const data = new Array(Math.trunc((12.5 * 3600) / audio.duration) + 1);
             let msg = "";
             for(let index = 0; index < data.length; ++index) data[index] = event.target.result;
             for(let index = 0; index < data.length; ++index) {
@@ -42,7 +43,16 @@
             let link = document.createElement("a");
             link.href = url;
             link.download = "download." + extension;
-            link.click();
+            link.click();*/
+            if(false) {
+              blob = new Blob([blob.arrayBuffer, event.target.result], {type: "" + extension});
+              audio.src = URL.createObjectURL(blob);
+            } else {
+              const link = document.createElement("a");
+              link.href = URL.createObjectURL(blob);
+              link.download = "download." + extension;
+              link.click();
+            }
           }
           audio.src = URL.createObjectURL(file);
         };
