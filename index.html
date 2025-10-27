@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(9)</title>
+    <title>Loop audio file(0)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -50,7 +50,7 @@
               link.click();
             }*/
             let link = document.createElement("a");
-            link.href = URL.createObjectURL(nblob);
+            link.href = URL.createObjectURL(blob);
             link.download = "download." + extension;
             link.click();
           }
