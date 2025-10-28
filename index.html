@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(7)</title>
+    <title>Loop audio file(8)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -36,15 +36,15 @@
             Obtain audio duration and determine if a new blob should be created.
             */
             window.document.getElementById("header1").innerHTML = "Audio metadata called."; //Confirms function call.
-            if(/*audio.duration > 12.5 * 3600*/true) {
+            if(audio.duration > 12.5 * 3600) {
               const link = window.document.createElement("a");
-              link.href = audio.src; //MISSING URL; CAN IT BE GOT WITH SOURCE???
+              link.href = audio.src;
               link.download = "DOWNLOAD." + extension;
               link.click();
             } else {
               blobReader.readAsArrayBuffer(blob);
-            }          
-            window.document.getElementById("header1").innerHTML = "Completion."; //Confirms function call.
+              window.document.getElementById("header1").innerHTML = "Completion."; //Confirms function call.
+            }
           }
           audio.src = URL.createObjectURL(blob);
           window.document.getElementById("header1").innerHTML = "loopAudio has been called"; //Confirms function call.
