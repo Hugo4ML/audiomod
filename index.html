@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(2)</title>
+    <title>Loop audio file(4)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -26,13 +26,17 @@
           let blob = new Blob([], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
           const base = event.target.result, blobReader = new FileReader(), audio = new Audio();
           blobReader.onload = (event) => {
+            window.document.getElementById("header1").innerHTML = "Blob loaded."; //Confirms function call.
             blob = new Blob([base, event.target.result], {type: "audio/" + extension});
+            url = URL.createObjectURL(blob);
             audio.src = url;
+            window.document.getElementById("header1").innerHTML = "Source changed."; //Confirms function call.
           }
           audio.onloadedmetadata = () => {
             /*
             Obtain audio duration and determine if a new blob should be created.
             */
+            window.document.getElementById("header1").innerHTML = "Audio metadata called."; //Confirms function call.
             if(/*audio.duration > 12.5 * 3600*/true) {
               const link = window.document.createElement("a");
               link.href = url;
@@ -40,10 +44,11 @@
               link.click();
             } else {
               blobReader.readAsArrayBuffer(blob);
-            }
+            }          
+            window.document.getElementById("header1").innerHTML = "Completion."; //Confirms function call.
           }
           audio.src = url;
-          window.document.getElementById("header1").innerHTML = "loopAudio called"; //Confirms function call.
+          window.document.getElementById("header1").innerHTML = "loopAudio has been called"; //Confirms function call.
           //audio.onloadedmetadata = async => {
             /*
             Generate new audio from file information.
