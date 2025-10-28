@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(6)</title>
+    <title>Loop audio file(7)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -38,7 +38,7 @@
             window.document.getElementById("header1").innerHTML = "Audio metadata called."; //Confirms function call.
             if(/*audio.duration > 12.5 * 3600*/true) {
               const link = window.document.createElement("a");
-              link.href = url;
+              link.href = audio.src; //MISSING URL; CAN IT BE GOT WITH SOURCE???
               link.download = "DOWNLOAD." + extension;
               link.click();
             } else {
