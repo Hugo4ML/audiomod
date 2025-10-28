@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(5)</title>
+    <title>Loop audio file(6)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -24,12 +24,11 @@
           Read file audio data.
           */
           const base = event.target.result, blobReader = new FileReader(), audio = new Audio();
-          let blob = new Blob([base], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
+          let blob = new Blob([base], {type: "audio/" + extension});
           blobReader.onload = (event) => {
             window.document.getElementById("header1").innerHTML = "Blob loaded."; //Confirms function call.
             blob = new Blob([base, event.target.result], {type: "audio/" + extension});
-            url = URL.createObjectURL(blob);
-            audio.src = url;
+            audio.src = URL.createObjectURL(blob);
             window.document.getElementById("header1").innerHTML = "Source changed."; //Confirms function call.
           }
           audio.onloadedmetadata = () => {
