@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Loop audio file(1)</title>
+    <title>Loop audio file(2)</title>
   </head>
   <body>
     <input type = "file" id = "file"></input>
@@ -19,17 +19,36 @@
         const file = window.document.getElementById("file").files[0], name = file.name, extension = name.substring(name.lastIndexOf('.') + 1, name.length) || name;
         window.document.getElementById("header1").innerHTML = "loopAudio ready to be called"; //Confirms function call.
         const fileReader = new FileReader();
-        fileReader.onload = event => {
+        fileReader.onload = (event) => {
           /*
           Read file audio data.
           */
-          let blob = new Blob([event.target.result], {type: "audio/" + extension});
-          const audio = new Audio();
-          audio.onloadedmetadata = async => {
+          let blob = new Blob([], {type: "audio/" + extension}), url = URL.createObjectURL(blob);
+          const base = event.target.result, blobReader = new FileReader(), audio = new Audio();
+          blobReader.onload = (event) => {
+            blob = new Blob([base, event.target.result], {type: "audio/" + extension});
+            audio.src = url;
+          }
+          audio.onloadedmetadata = () => {
+            /*
+            Obtain audio duration and determine if a new blob should be created.
+            */
+            if(/*audio.duration > 12.5 * 3600*/true) {
+              const link = window.document.createElement("a");
+              link.href = url;
+              link.download = "DOWNLOAD." + extension;
+              link.click();
+            } else {
+              blobReader.readAsArrayBuffer(blob);
+            }
+          }
+          audio.src = url;
+          window.document.getElementById("header1").innerHTML = "loopAudio called"; //Confirms function call.
+          //audio.onloadedmetadata = async => {
             /*
             Generate new audio from file information.
             */
-            const data = new Array(Math.trunc((12.5 * 3600) / audio.duration) + 1);
+            /*const data = new Array(Math.trunc((12.5 * 3600) / audio.duration) + 1);
             let msg = "";
             for(let index = 0; index < data.length; ++index) data[index] = event.target.result;
             for(let index = 0; index < data.length; ++index) {
@@ -41,7 +60,7 @@
             }
             const nblob = new Blob(data, {type: "audio/" + extension}), url = URL.createObjectURL(nblob);
             
-            blob = new Blob([blob.arrayBuffer(), blob.arrayBuffer(), blob.arrayBuffer(), event.target.result], {type: "audio/" + extension});
+            blob = new Blob([blob.arrayBuffer(), blob.arrayBuffer(), blob.arrayBuffer(), event.target.result], {type: "audio/" + extension});*/
             //audio.src = URL.createObjectURL(blob);
             /* else {
               const link = document.createElement("a");
@@ -49,13 +68,12 @@
               link.download = "download." + extension;
               link.click();
             }*/
-            let link = document.createElement("a");
+            /*let link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
             link.download = "download." + extension;
             link.click();
-          }
-          audio.src = URL.createObjectURL(file);
-        };
+          }*/
+        }
         fileReader.readAsArrayBuffer(file);
       }
     </script>
