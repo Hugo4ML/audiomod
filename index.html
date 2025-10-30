@@ -5,19 +5,13 @@
   </head>
   <body>
     <input type = "file" id = "file"></input>
-    <button onclick='window.document.getElementById("header1").innerHTML = "loopAudio call state";'>Reset header</button>
     <button onclick='loopAudio();'>Concat audio!</button>
-    <h1 id = 'header1'>Header</h1>
-    <h2 id = 'header2'>Header</h2>
     <script>
-      window.document.getElementById("header1").innerHTML = "loopAudio call state"
       async function loopAudio() {
         /*
         Generates new audio by concatenating original to itself until it passes the specified lenght in time.
         */
-        window.document.getElementById("header1").innerHTML = "loopAudio called"; //Confirms function call.
         const file = window.document.getElementById("file").files[0], name = file.name, extension = name.substring(name.lastIndexOf('.') + 1, name.length) || name;
-        window.document.getElementById("header1").innerHTML = "loopAudio ready to be called"; //Confirms function call.
         const fileReader = new FileReader();
         fileReader.onload = (event) => {
           /*
